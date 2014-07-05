@@ -26,10 +26,20 @@ reverse' [] = []
 reverse' (a:as) = reverse' as ++ [a]
 --8. Consider a function safetail that behaves in the same way as tail, except that safetail maps the empty list to the empty list, whereas tail gives an error in this case.  Define safetail using:
 --  (a)	a conditional expression;
+safetail1 as = if (null as) then [] else tail as
 --  (b)	guarded equations;
+safetail2 as
+ | null as  = []
+ | otherwise = tail as
+
 --  (c)	pattern matching.
+safetail [] = []
+safetail (a:as) = as
 
 --9. Give three possible definitions for the logical or operator (||) using pattern matching.
+
+isOr False x = x
+isOr True _ = True
 
 --10. A triple (x,y,z) of positive integers is called pythagorean if
 --x^2 + y^2 = z^2.
@@ -37,6 +47,8 @@ reverse' (a:as) = reverse' as ++ [a]
 --For example:
 -- pyths 5
 --[(3,4,5),(4,3,5)]
+
+
 
 --11. A positive integer is perfect if it equals the sum of all of its factors, excluding the number itself.  Using a list comprehension, define a function that returns the list of all perfect numbers up to a given limit.
 --For example:
