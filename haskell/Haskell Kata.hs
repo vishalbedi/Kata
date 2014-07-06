@@ -47,13 +47,17 @@ isOr True _ = True
 --For example:
 -- pyths 5
 --[(3,4,5),(4,3,5)]
-
-
+pythagoreanTriplet n
+  = [(x,y,z)|x<-[1..n],y<-[1..n],z<-[1..n], (x*x) + (y*y) == (z*z)]
 
 --11. A positive integer is perfect if it equals the sum of all of its factors, excluding the number itself.  Using a list comprehension, define a function that returns the list of all perfect numbers up to a given limit.
 --For example:
 -- perfects 500
 --[6,28,496]
+factors 0 = [0]
+factors n = [x|x<-[1..n-1],(mod n x) == 0]
+perfectInt 0 = []
+perfectInt n = [x|x<-[1..n],sum' (factors x) == x]
 
 --12. The scalar product of two lists of integers xs and ys of length n is give by the sum of the products of the corresponding integers.
 --Using a list comprehension, define a function that returns the scalar product of two lists.
