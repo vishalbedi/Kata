@@ -15,3 +15,9 @@ def test_eight():
 
 def test_eighteen():
     assert intToRoman(18) == "XVIII", "18 to XVIII"
+
+def test_nine():
+    assert intToRoman(9) == "IX" , "9 is IX"
+
+def test_long_nine_based_number():
+    assert intToRoman(1994) == "MCMXCIV" , "test passed"
