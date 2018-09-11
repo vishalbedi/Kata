@@ -5,45 +5,25 @@ def intToRoman(num):
     """
     roman = []
     if num > 1000:
-        temp_num = num // 1000
-        num -= temp_num * 1000
-        while(temp_num > 0):
-            roman.append("M")
-            temp_num-=1
+        num = add_roman(1000, "M", num, roman)
     if num > 500:
-        temp_num = num // 500
-        num -= temp_num * 500
-        while(temp_num > 0):
-            roman.append("D")
-            temp_num-=1
+        num = add_roman(500, "D", num, roman)
     if num > 100:
-        temp_num = num // 100
-        num -= temp_num * 100
-        while(temp_num > 0):
-            roman.append("C")
-            temp_num-=1
+        num = add_roman(100, "C", num, roman)
     if num > 50:
-        temp_num = num // 50
-        num -= temp_num * 50
-        while(temp_num > 0):
-            roman.append("L")
-            temp_num-=1
+        num = add_roman(50, "L", num, roman)
     if num > 10:
-        temp_num = num // 10
-        num -= temp_num * 10
-        while(temp_num > 0):
-            roman.append("X")
-            temp_num-=1
+        num = add_roman(10, "X", num, roman)
     if num > 5:
-        temp_num = num // 5
-        num -= temp_num * 5
-        while(temp_num > 0):
-            roman.append("V")
-            temp_num-=1
+        num = add_roman(5, "V", num, roman)
     if num > 0:
-        temp_num = num
-        num -= temp_num
-        while(temp_num > 0):
-            roman.append("I")
-            temp_num-=1
+        num = add_roman(1, "I", num, roman)
     return "".join(roman)
+
+def add_roman(int_num, roman_digit, cur_num, roman):
+    temp_num = cur_num // int_num
+    cur_num -= temp_num * int_num
+    while(temp_num > 0):
+        roman.append(roman_digit)
+        temp_num-=1
+    return cur_num
